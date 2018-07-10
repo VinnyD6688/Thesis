@@ -1,0 +1,12 @@
+Instructions
+
+Test File should be good to go with several fields filled in
+
+Replace:
+
+Density with density of material 6
+Element with the element for library generation
+Composition with composition of the element for library generation
+
+
+All other fields should remain the same for each run

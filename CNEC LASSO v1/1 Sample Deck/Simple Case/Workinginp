@@ -1,0 +1,166 @@
+MCNPX Visual Editor Version X_24E 
+c     Created on: Tuesday, October 13, 2015 at 12:18                            
+    1     1   -7.78 -12 4 -3  $ bottom of the tool
+   17     8    -2.5 107 -12 96 -103 
+    2     1   -7.78 -12 11 3 -9 #17  $ Shell of the tool
+    3     1   -7.78 -12 9 -10  $ Top of the tool
+    4     0         -14 2 -1  $ source
+    5     3 -0.000538 -13 7 -8  $ near neutron detector
+    7     7   -5.29 -92 90 -91 
+    9     2   -8.65 -11 -95 96 
+   10     3 -0.000538 -99 97 -98  $ far neutron detector
+   12     2   -8.65 -11 18 -17  $ far sheilding
+   21     6   -7.19 -11 17 -102 
+   13     0         -11 3 -18 #4 
+   14     0         -11 17 -9 #5 #7 #9 #10 #21 
+   15     5      -1 -19 42 -87 #1 #2 #3 #4 #5 #12 #13 #14 #7 #9 #10 #21 #17 
+   16     4  -2.71 19 -41 42 -87 
+   20     0         41 :-42 :87 
+
+    1        pz 49.25  $ cell of the source
+    2        pz 48.75  $ cell of the source
+    3        pz 29  $ bottom of the tool
+    4        pz 26  $ bottom of the tool
+    5        pz 76  $ near He-3 detector
+    6        pz 86  $ near He-3 detector
+    7        pz 68.5  $ far He-3 detector
+    8        pz 79.5  $ far He-3 detector
+    9        pz 160  $ top of the tool
+   10        pz 162  $ top of the tool
+   11        cz 3.6  $ inner diameter of the tool
+   12        cz 4.6  $ outer diameter of the tool
+   13        cz 1.27  $ boundary for far He-3 detector
+   88       c/z -2.5 0 3 
+   89        px -2.5 
+   90        pz 89.5  $ bottom of gamma ray detector
+   91        pz 104.5  $top of gamma ray detector
+  103        pz 108 
+  107        cz 4.4 
+   92        cz 2.5 
+   93       c/z 1 0 3.8 
+   94        px 1  $ gamma ray detector sheilding
+   95        pz 85.5 
+   96        pz 80.5 
+   97        pz 111.5  $ bottom of far neutron detector
+   98        pz 134.9  $ top of far neutron detector
+   99        cz 2.2 
+  100       c/z 1 0 3.8 
+  101        px 1 
+   14        cz 1.27  $ boundary for near He-3 detector
+   15        pz 75  $sheildig
+   16        pz 72  $ sheilding
+   17        pz 67.5  $ sheilding
+   18        pz 64.5 
+  102        pz 67.8 
+   19       c/z -5.3 0 10  $ sheilding
+   20       c/z -5.3 0 13  $
+   21       c/z -5.3 0 16 
+   22       c/z -5.3 0 19 
+   23       c/z -5.3 0 22 
+   24       c/z -5.3 0 25 
+   25       c/z -5.3 0 28 
+   26       c/z -5.3 0 31 
+   27       c/z -5.3 0 34 
+   28       c/z -5.3 0 37 
+   29       c/z -5.3 0 40 
+   30       c/z -5.3 0 43 
+   31       c/z -5.3 0 46 
+   32       c/z -5.3 0 49 
+   33       c/z -5.3 0 52 
+   34       c/z -5.3 0 55 
+   35       c/z -5.3 0 58 
+   36       c/z -5.3 0 61 
+   37       c/z -5.3 0 64 
+   38       c/z -5.3 0 67 
+   39       c/z -5.3 0 70 
+   40       c/z -5.3 0 73 
+   41       c/z -5.3 0 76 
+   42        pz 0 
+   43        pz 5 
+   44        pz 10 
+   45        pz 15 
+   46        pz 20 
+   47        pz 25 
+   48        pz 30 
+   49        pz 35 
+   50        pz 40 
+   51        pz 45 
+   52        pz 50 
+   53        pz 55 
+   54        pz 60 
+   55        pz 65 
+   56        pz 70 
+   57        pz 75 
+   58        pz 80 
+   59        pz 85 
+   60        pz 90 
+   61        pz 95 
+   62        pz 100 
+   63        pz 105 
+   64        pz 110 
+   65        pz 115 
+   66        pz 120 
+   67        pz 125 
+   68        pz 130 
+   69        pz 135 
+   70        pz 140 
+   71        pz 145 
+   72        pz 150 
+   73        pz 155 
+   74        pz 160 
+   75        pz 165 
+   76        pz 170 
+   77        pz 175 
+   78        pz 180 
+   79        pz 185 
+   80        pz 190 
+   81        pz 195 
+   82        pz 200 
+   83        pz 205 
+   84        pz 210 
+   85        pz 215 
+   86        pz 220 
+   87        pz 225 
+
+mode  n p
+m1    26000.           -0.756  $17-4 stainless steel
+      24000.            -0.16 28000.            -0.04 6000.           -0.0005 
+      14000.            -0.01 25055.            -0.01 15031.          -0.0003 
+      16000.          -0.0002 29000.            -0.04 41093.           -0.003 
+m2    48106.           0.0125  $MAT
+      48110.           0.1249 48111.            0.128 48112.           0.2413 
+      48113.           0.1222 48114.           0.2873 48116.           0.0749 
+m3    2003.                 1  $He-3   $ He-3 gas
+m4    20000 1 6000 1 8016 3
+m5    1001.                 2  $MAT
+      8016.                 1 
+m6    24000.                1  $ Cr
+m7    57000.          -0.3484  $ LaBr3 crystal
+      35000.          -0.6016 58140.            -0.05 
+m8    5010.         -0.154991  
+      5011.         -0.627791 6000.         -0.217218 
+imp:p   1 5r         0            1 7r         0             $ 1, 20
+imp:n   1 5r         0            1 7r         0             $ 1, 20
+sdef pos = 0 0 49 ERG=14 CEL=4 RAD = D1 EXT= D2 AXS = 0 0 1 TME = D3            
+si1   1.27                                                                      
+sp1   -21 1                                                                     
+si2   0.5                                                                       
+sp2   -21 0                                                                     
+si3   H 0 4000                                                                  
+sp3   D 0 1                                                                     
+f4:n  5                                                                         
+fm4   -178.36 3 103                                                             
+f14:n  10                                                                       
+fm14   -178.36 3 103                                                            
+f24:n  5                                                                        
+fm24   -178.36 3 103                                                            
+t24    0 99i 100000                                                             
+f34:n  10                                                                       
+fm34   -178.36 3 103                                                            
+t34    0 99i 100000                                                             
+f1:p   (92 90 91)                                                               
+e1   0 511i 10.2                                                                  
+f11:p (92 90 91)                                                                
+t11  0 99i 100000                                                               
+f21:p (92 90 91)                  
+nps  1E8                                                                        

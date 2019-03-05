@@ -4,7 +4,7 @@ from numpy import array
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import scale
-from sklearn.linear_model import Lasso, LassoCV, ElasticNet, ElasticNetCV
+from sklearn.linear_model import Lasso, LassoCV, ElasticNet, ElasticNetCV, enet_path
 from sklearn.metrics import mean_squared_error
 
 
@@ -20,8 +20,24 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5)
 coefs = []
 alphas = 10**np.linspace(10,-2,100)*.5
 
-en = ElasticNetCV(l1_ratio=1, alphas=None, cv=10, max_iter=100000, normalize=True)
+en = ElasticNetCV(l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0], alphas=None, cv=10, max_iter=100000, normalize=True)
 en.fit(X_train, y_train)
+
+eps = 5e-3
+
+alphas_enet, coefs_enet, _ = enet_path(
+    X, y, eps=eps, l1_ratio=0.8, fit_intercept=False)
+
+plt.figure(1)
+neg_log_alphas_enet = -np.log10(alphas_enet)
+
+    l2 = plt.plot(neg_log_alphas_enet, coef_e, linestyle='--', c=c)
+
+plt.xlabel('-Log(alpha)')
+plt.ylabel('coefficients')
+plt.title('Elastic-Net Path')
+plt.legend(l2[-1], ('Elastic-Net'), loc='lower left')
+plt.axis('tight')
 
 print("Best for alphas:")
 print(en.alpha_)

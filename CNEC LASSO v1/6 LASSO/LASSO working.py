@@ -45,6 +45,7 @@ for a in alphas:
 ax = plt.gca()
 ax.plot(alphas*2, coefs)
 ax.set_xscale('log')
+ax.set_yscale('sci')
 """
 
 """

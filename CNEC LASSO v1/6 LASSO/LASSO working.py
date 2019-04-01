@@ -15,27 +15,28 @@ originalenergy = pd.read_csv("Energy.csv")
 X = libraries
 y = target.y
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5)
+alphas = 10**np.linspace(10,-2,100)*.5
+lassocv = LassoCV(alphas=None, cv=10, max_iter=100000, normalize=True, positive=False)
+model = lassocv.fit(X_train, y_train)
 
-"""
-ax = plt.gca()
-ax.plot(y)
 
-ax.set_xscale('log')
+m_log_alphas = -np.log10(model.alphas_)
 
+plt.figure()
+
+plt.plot(m_log_alphas, np.log10(model.mse_path_), ':')
+plt.plot(m_log_alphas, np.log10(model.mse_path_.mean(axis=-1)), 'k', label='Average across the folds', linewidth=2)
+plt.axvline(-np.log10(model.alpha_), linestyle='--', color='k',label='alpha: CV estimate')
+plt.legend()
+plt.xlabel('-log(alpha)')
+plt.ylabel('Mean square error')
+plt.title('Mean square error on each fold: coordinate descent')
 plt.axis('tight')
-
-plt.xlabel('Alpha')
-plt.ylabel('Coefficients')
-plt.title('Optimal Alpha Parameters')
 plt.show()
 
-"""
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5)
-
-lasso = Lasso(max_iter=10000, normalize=True)
+lasso = Lasso(max_iter=10000, normalize=True, positive=True)
 coefs = []
-alphas = 10**np.linspace(10,-2,100)*.5
-
 
 for a in alphas:
     lasso.set_params(alpha=a)
@@ -45,21 +46,22 @@ for a in alphas:
 ax = plt.gca()
 ax.plot(alphas*2, coefs)
 ax.set_xscale('log')
-ax.set_yscale('sci')
-"""
 
-"""
 plt.xlabel('Alpha')
 plt.ylabel('Coefficients')
+plt.axvline(model.alpha_, linestyle='--', color='k',label='alpha: CV estimate')
 plt.title('Optimal Alpha Parameters')
 plt.show()
-
-lassocv = LassoCV(alphas=None, cv=10, max_iter=100000, normalize=True)
-lassocv.fit(X_train, y_train)
 lasso.set_params(alpha=lassocv.alpha_)
 lasso.fit(X_train, y_train)
 mean_squared_error(y_test, lasso.predict(X_test))
-
+print("Best for alphas:")
+print(lassocv.alpha_)
+"""
+print("Best l1-ratio:")
+print(lasso.l1_ratio)
+"""
+print("Coefficients:")
 print(pd.Series(lasso.coef_, index=X.columns))
 print(mean_squared_error(y_test, lasso.predict(X_test)))
 fit = lasso.coef_*X

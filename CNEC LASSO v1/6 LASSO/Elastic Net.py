@@ -31,7 +31,7 @@ alphas_enet, coefs_enet, _ = enet_path(
 plt.figure(1)
 neg_log_alphas_enet = -np.log10(alphas_enet)
 
-    l2 = plt.plot(neg_log_alphas_enet, coef_e, linestyle='--', c=c)
+
 
 plt.xlabel('-Log(alpha)')
 plt.ylabel('coefficients')

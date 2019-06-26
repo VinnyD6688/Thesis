@@ -21,9 +21,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.9)
 coefs = []
 alphas = 10**np.linspace(10,-2,100)*.5
 
-en = ElasticNetCV(l1_ratio=1, alphas=None, cv=20, max_iter=100000, normalize=True)
+en = ElasticNetCV(l1_ratio=1, alphas=None, cv=10, max_iter=100000, normalize=True, positive=False)
 en.fit(X_train, y_train)
-ElasticNet = ElasticNet(max_iter=10000, normalize=True, positive=False)
+ElasticNet = ElasticNet(l1_ratio=1,max_iter=10000, normalize=True, positive=False)
 # Display results
 model = en.fit(X_train, y_train)
 m_log_alphas = -np.log10(model.alphas_)
@@ -46,7 +46,7 @@ for a in alphas:
     coefs.append(ElasticNet.coef_)
  
 
-label_list=['Na', 'Cl', 'Water', 'Fe', 'Cu'] 
+label_list=['Na Library', 'Cl Library', 'Water Library', 'Fe Library', 'Cu Library'] 
 ax = plt.gca()
 lineObjects = ax.plot(alphas, coefs)
 ax.set_xscale('log')

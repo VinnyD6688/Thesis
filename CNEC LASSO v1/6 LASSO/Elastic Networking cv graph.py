@@ -18,7 +18,7 @@ y = target.y
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.95)
 alphas = 10**np.linspace(10,-2,100)*.5
-en = ElasticNetCV(l1_ratio=1, alphas=None, positive=True, cv=20, max_iter=100000, normalize=True)
+en = ElasticNetCV(l1_ratio=1, alphas=None, positive=False, cv=20, max_iter=100000, normalize=True)
 model = en.fit(X_train, y_train)
 
 
@@ -37,7 +37,7 @@ plt.title('Mean square error on each fold: coordinate descent')
 plt.axis('tight')
 plt.show()
 
-en = ElasticNet(max_iter=10000, normalize=False, positive=True)
+en = ElasticNet(max_iter=10000, normalize=False, positive=False)
 coefs = []
 
 en.set_params(alpha=model.alpha_)

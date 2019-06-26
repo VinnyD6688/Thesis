@@ -35,7 +35,7 @@ plt.title('Mean square error on each fold: coordinate descent')
 plt.axis('tight')
 plt.show()
 
-lasso = Lasso(max_iter=10000, normalize=True, positive=True)
+lasso = Lasso(max_iter=10000, normalize=True, positive=False)
 coefs = []
 
 for a in alphas:
@@ -43,14 +43,22 @@ for a in alphas:
     lasso.fit(scale(X_train), y_train)
     coefs.append(lasso.coef_)
  
-ax = plt.gca()
-ax.plot(alphas*2, coefs)
-ax.set_xscale('log')
 
+
+label_list=['Na Library', 'Cl Library', 'Water Library', 'Fe Library', 'Cu Library'] 
+ax = plt.gca()
+lineObjects = ax.plot(alphas*2, coefs)
+ax.set_xscale('log')
+plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+plt.locator_params(axis='y', nbins=10)
+"""
+    
+"""
 plt.xlabel('Alpha')
 plt.ylabel('Coefficients')
 plt.axvline(model.alpha_, linestyle='--', color='k',label='alpha: CV estimate')
 plt.title('Optimal Alpha Parameters')
+plt.legend(iter(lineObjects), label_list)
 plt.show()
 lasso.set_params(alpha=lassocv.alpha_)
 lasso.fit(X_train, y_train)
